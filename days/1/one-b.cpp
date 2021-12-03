@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <fstream>
 
 using namespace std;
@@ -11,7 +10,7 @@ int main()
     int buckets[3] = { 0, 0, 0 };    
     ifstream inputFile;
 
-    inputFile.open("input.txt");
+    inputFile.open("input");
 
     while (inputFile >> reading)
     {

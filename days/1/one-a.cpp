@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <fstream>
 
 using namespace std;
@@ -7,7 +6,7 @@ using namespace std;
 int main()
 {
     ifstream inputFile;
-    inputFile.open("input-1a.txt");
+    inputFile.open("input");
 
     int baseNum, reading, result = 0;
 
