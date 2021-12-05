@@ -10,7 +10,7 @@ int main()
     int buckets[3] = { 0, 0, 0 };    
     ifstream inputFile;
 
-    inputFile.open("input");
+    inputFile.open("input.txt");
 
     while (inputFile >> reading)
     {
