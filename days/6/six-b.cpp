@@ -20,7 +20,7 @@ int main()
         feesh[stoi(line)]++;
     }
 
-    for (int i = 0; i < NUM_DAYS; i++) {w
+    for (int i = 0; i < NUM_DAYS; i++) {
         // 1) Mark fish ready for birth
         unsigned long long newFish = feesh[0];
         feesh[7] += feesh[0];
