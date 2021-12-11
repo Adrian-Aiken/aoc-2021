@@ -55,11 +55,11 @@ int main(int argc, char *argv[])
         if (lineScore > 0) scores.push_back(lineScore);
     }
 
-    sort(scores.begin(), scores.end());
+    std::sort(scores.begin(), scores.end());
 
-    cout << "Scores:\n";
-    for (auto s: scores) cout << "\t" << s << endl;
+    std::cout << "Scores:\n";
+    for (auto s: scores) std::cout << "\t" << s << endl;
 
     unsigned long long middle = scores[(scores.size()/2)];
-    cout << "\nMiddle: " << middle << endl;
+    std::cout << "\nMiddle: " << middle << endl;
 }
