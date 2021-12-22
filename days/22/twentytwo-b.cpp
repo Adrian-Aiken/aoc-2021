@@ -211,7 +211,7 @@ int main(int argc, char *argv[])
     for (int y = 0; y < ys.size()-1; y++)
     for (int z = 0; z < zs.size()-1; z++)
         if (core[x][y][z])
-            totalCount += (int64_t)(abs(xs[x+1] - xs[x]) * abs(ys[y+1] - ys[y]) * abs(zs[z+1] - zs[z]));  
+            totalCount +=  (int64_t)(abs(xs[x+1] - xs[x]) * abs(ys[y+1] - ys[y]) * abs(zs[z+1] - zs[z]));  
 
     printf("================= TOTAL COUNT: [%18.1" PRIu64 "] cubes ================\n", totalCount);
     printf("==========================================================================\n\n");
