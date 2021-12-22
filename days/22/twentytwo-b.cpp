@@ -172,16 +172,16 @@ int main(int argc, char *argv[])
         while (i <= line.size()) foo += line[i++];
         s.cuboid.zRange.second = stoi(foo)+1;
 
-        xs.push_back(s.cuboid.xRange.first); xs.push_back(s.cuboid.xRange.second);
-        ys.push_back(s.cuboid.yRange.first); ys.push_back(s.cuboid.yRange.second);
-        zs.push_back(s.cuboid.zRange.first); zs.push_back(s.cuboid.zRange.second);
+        xs.push_back(s.cuboid.xRange.first); xs.push_back(s.cuboid.xRange.second+1);
+        ys.push_back(s.cuboid.yRange.first); ys.push_back(s.cuboid.yRange.second+1);
+        zs.push_back(s.cuboid.zRange.first); zs.push_back(s.cuboid.zRange.second+1);
 
         steps.push_back(s);
     }
 
-    sort(xs.begin(), xs.end()); xs.erase(unique(xs.begin(), xs.end()), xs.end());
-    sort(ys.begin(), ys.end()); ys.erase(unique(ys.begin(), ys.end()), ys.end());
-    sort(zs.begin(), zs.end()); zs.erase(unique(zs.begin(), zs.end()), zs.end());
+    sort(xs.begin(), xs.end());
+    sort(ys.begin(), ys.end());
+    sort(zs.begin(), zs.end());
 
     printf("==========================================================================\n");
     printf("================== Beginning procedure with [%2d] cubes ===================\n", steps.size());
@@ -194,11 +194,11 @@ int main(int argc, char *argv[])
     // Mark sub-cubes on or off based on lighting
     for (auto s: steps) {
         int xBegin = lower_bound(xs.begin(), xs.end(), s.cuboid.xRange.first) - xs.begin();
-        int xEnd = lower_bound(xs.begin(), xs.end(), s.cuboid.xRange.second ) - xs.begin();
+        int xEnd =   lower_bound(xs.begin(), xs.end(), s.cuboid.xRange.second+1) - xs.begin();
         int yBegin = lower_bound(ys.begin(), ys.end(), s.cuboid.yRange.first) - ys.begin();
-        int yEnd = lower_bound(ys.begin(), ys.end(), s.cuboid.yRange.second) - ys.begin();
+        int yEnd =   lower_bound(ys.begin(), ys.end(), s.cuboid.yRange.second+1) - ys.begin();
         int zBegin = lower_bound(zs.begin(), zs.end(), s.cuboid.zRange.first) - zs.begin();
-        int zEnd = lower_bound(zs.begin(), zs.end(), s.cuboid.zRange.second) - zs.begin();
+        int zEnd =   lower_bound(zs.begin(), zs.end(), s.cuboid.zRange.second+1) - zs.begin();
 
         for (int x = xBegin; x < xEnd; x++)
         for (int y = yBegin; y < yEnd; y++)
@@ -211,7 +211,7 @@ int main(int argc, char *argv[])
     for (int y = 0; y < ys.size()-1; y++)
     for (int z = 0; z < zs.size()-1; z++)
         if (core[x][y][z])
-            totalCount +=  (int64_t)(abs(xs[x+1] - xs[x]) * abs(ys[y+1] - ys[y]) * abs(zs[z+1] - zs[z]));  
+            totalCount += (int64_t)(abs(xs[x+1] - xs[x]) * abs(ys[y+1] - ys[y]) * abs(zs[z+1] - zs[z]));  
 
     printf("================= TOTAL COUNT: [%18.1" PRIu64 "] cubes ================\n", totalCount);
     printf("==========================================================================\n\n");
